@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app {
+            border: dashed black 1px;
+            width: 350px;
+            padding: 0 20px;
+        }
+        #app > div {
+            width: 200px;
+            height: 80px;
+        }
+        #app span {
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="app">
+        <input type="text" v-on:input="inpCount++" placeholder="Start writing..">
+        <p>{{ 'Input events occured: '+inpCount }}</p>
+
+        <p>Moue move event</p>
+        <div v-on:mousemove=" colorVal = Math.floor(Math.random()*360) " v-bind:style=" {backgroundColor: 'hsl('+colorVal+',60%,60%)'} "></div>
+            <p><span>backgroundColor: hsl(<strong>{{ colorVal }}</strong>, 80%, 80%)</span></p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+            return {
+                inpCount: 0,
+                colorVal: 50
+            }
+            }
+        })
+        app.mount('#app')
+    </script> -->
+
+    <!-- V on in a V for loop -->
+     <div id="app">
+        <img v-bind:src="imgUrl">
+        <ol>
+            <li v-for="food in manyFoods" v-on:click="imgUrl = food.url">
+            {{ food.name }}
+            </li>
+        </ol>
+        </div>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script>
+        const app = Vue.createApp({
+            data() {
+            return {
+                imgUrl: 'img_pizza.svg',
+                manyFoods: [
+                {name: 'Burrito', url: 'img_burrito.svg'},
+                {name: 'Salad', url: 'img_salad.svg'},
+                {name: 'Cake', url: 'img_cake.svg'},
+                {name: 'Soup', url: 'img_soup.svg'},
+                {name: 'Fish', url: 'img_fish.svg'},
+                {name: 'Pizza', url: 'img_pizza.svg'},
+                {name: 'Rice', url: 'img_rice.svg'}
+            ]
+            }
+            }
+        })
+        app.mount('#app')
+        </script>
+</body>
+</html>

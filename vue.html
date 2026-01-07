@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My First Vue Page</title>
+
+    <style>
+        .pinkBG {
+            background-color: lightpink;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        {{ message }}
+        {{ message }} <br> 
+        {{'Random number: ' + Math.ceil(Math.random()*6) }} <br>
+
+        <div v-bind:class="vueClass">Pink BG</div>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -15,7 +24,8 @@
         const app = Vue.createApp({
             data(){
                 return {
-                    message: "Hello World!"
+                    //message: "Hello World!"
+                    vueClass: "pinkBG"
                 }
             }
         })
