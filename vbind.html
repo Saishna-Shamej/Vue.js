@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            border: dashed black 1px;
+            width: 250px;
+            padding: 0 10px 10px 10px;
+        }
+        img{
+            width: 100%;
+        }
+        p{
+            text-align: center;
+        }
+
+        #abc > div {
+            width: 200px;
+            padding: 20px;
+            border: dashed black 1px;
+            text-align: center;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <h2>V-Bind Image example</h2>
+    <div id="app">
+        <p>My Image</p>
+        <img v-bind:src="url">
+    </div>
+
+    <h2>V-Bind Font size Example</h2>
+    <div id="abc">
+        <!-- <div v-bind:style="{fontsize:size}">Example text</div> -->
+        <div v-bind:style="{ fontSize: size + 'px', backgroundColor: isImportant ? 'hsl(' + bgVal + ',80%,80%)' : 'lightgray' }">
+            Example text
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    url: "mountain.jpg"
+                }
+            }
+        })
+        app.mount('#app')
+
+        const abc = Vue.createApp({
+            data() {
+                return {
+                    //size: '50px'
+                    size: 50,
+                    bgVal: 200,
+                    isImportant: false
+                }
+            }
+        })
+        abc.mount('#abc')
+    </script>
+</body>
+</html>
