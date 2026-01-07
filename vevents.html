@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #abc {
+            border: dashed black 1px;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        #abc > button {
+            display: block;
+            margin: auto;
+        }
+
+        #lightDiv {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+
+        #lightDiv > img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        #lightDiv > div {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h2>Vue Events</h2>
+    <div id="app">
+        <h4>Moose</h4>
+        <p>{{ "Moose count: " + count }}</p>
+        <button v-on:click="count++">Count moose</button>
+    </div>
+    <!-- v on -->
+    <div id="abc">
+        <div id="lightDiv">
+            <div v-show="lightOn"></div>
+            <img src="img_lightbulb.svg">
+        </div>
+        <button v-on:click=" lightOn =! lightOn ">Switch light</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    count: 0
+                }
+            }
+        })
+        app.mount('#app')
+
+        //v-on
+
+        const abc = Vue.createApp({
+            data() {
+            return {
+                lightOn: false
+            }
+            }
+        })
+        abc.mount('#abc')
+    </script>
+</body>
+</html>

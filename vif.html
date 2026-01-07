@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-if="typewritersinstock">
+            In Stock
+        </p>
+        <p v-else="typewritersinstock">
+            Out of Stock
+        </p>
+    </div>
+
+    <div id="abc">
+        <p v-if="typewriterCount>3">
+            in stock
+        </p>
+        <p v-if="typewriterCount>0">
+            Very few left
+        </p>
+        <p v-else>
+            not in stock
+        </p>
+    </div>
+
+    <div id="bcd">
+        <p v-if="typewriterCount>1">
+            in stock
+        </p>
+        <p v-else>
+            not in stock
+        </p>
+    </div>
+
+    <div id="pqr">
+        <p>Find the 'showDiv' data property in the code, change it to 'false', and run the code again.</p>
+        <div v-show="showDiv">This div tag can be hidden</div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    typewritersinstock: false
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+
+    <script>
+        const abc = Vue.createApp({
+            data(){
+                return {
+                    typewriterCount: 2
+                }
+            }
+        })
+        abc.mount('#abc')
+    </script>
+
+    <script>
+        const bcd = Vue.createApp({
+            data(){
+                return {
+                    typewriterCount: 0
+                }
+            }
+        })
+        bcd.mount('#bcd')
+    </script>
+
+    <script>
+        const pqr = Vue.createApp({
+            data() {
+            return {
+                showDiv: true
+                
+                
+            }
+            }
+        })
+        pqr.mount('#pqr')
+    </script>
+</body>
+</html>
