@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            border: 2px solid black;
+            width: 500px;
+            height: 200px;
+            text-align: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shopping List</h1>
+    <div id="app">
+        <form v-on:submit.prevent = "addItem">
+            <p>
+                What do you need?
+                <input type="text" required placeholder="Item name" v-model="itemName">
+            </p>
+            <p>
+                How many?
+                <input type="text" required placeholder="Item count" v-model="itemCount">
+            </p>
+            <button type="submit">Add item</button>
+        </form>
+        <div>
+            <p>Shopping list:</p>
+            <ul>
+                <li v-for="item in shoppingList">{{ item.name }}, {{ item.count}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Two way binding</h2>
+    <div id="apps">
+        <input type="text" v-model="inpText">
+        <p>inpText value: "{{ inpText }}" </p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    itemName: null,
+                    itemCount: null,
+                    shoppingList: [
+                        {name: 'Tomatoes', count:5}
+                    ]
+                }
+            },
+
+            methods: {
+                addItem(){
+                    let item = {
+                        name: this.itemName,
+                        count: this.itemCount
+                    }
+                    this.shoppingList.push(item)
+                    this.itemName = null
+                    this.itemCount = null   
+                }
+            }
+        })
+        app.mount('#app')
+
+        const apps = Vue.createApp({
+            data() {
+            return {
+                inpText: 'Hello'
+            }
+            }
+        })
+        apps.mount('#apps')
+    </script>
+</body>
+</html>
